@@ -2,7 +2,7 @@ import dataProvider.CalculatorDataProvider;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CalculatorTests {
+public class CalculatorTest {
     @Test(dataProvider = "sumDataProvider", dataProviderClass = CalculatorDataProvider.class)
     public void sumTest(int firstTerm, int secondTerm, int expectedResult) {
         Assert.assertEquals(Calculator.getSum(firstTerm, secondTerm), expectedResult);
