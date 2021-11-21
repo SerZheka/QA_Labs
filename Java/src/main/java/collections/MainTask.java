@@ -31,16 +31,17 @@ public class MainTask {
         Airport airport = new Airport(planes);
 
         System.out.printf("Общая вместимость груза самолетов: %d\n", airport.getTotalCapacity());
-        System.out.printf("Общая вместимость пассажиров самолетов: %d\n", airport.getTotalPassengersCapacity());
+        System.out.printf("Общая вместимость пассажиров самолетов: %d\n\n", airport.getTotalPassengersCapacity());
+
         System.out.println("Самолеты, отсортированные по дальности полета:");
         airport.sortByMaxDistance();
         airport.getPlanes().forEach(System.out::println);
         System.out.println();
+
         Optional<? extends Plane> planeWithFuelConsumptionIn195_210 = airport.getPlanesInRangeFuelConsumption(195, 210).stream().findFirst();
         if (planeWithFuelConsumptionIn195_210.isPresent())
             System.out.printf("Самолет, потребление горючего которого лежит в диапазоне 195 - 210: %s", planeWithFuelConsumptionIn195_210.get());
         else
             System.out.print("Нет самолетов, потребление горючего которых лежит в диапазоне 195 - 210");
-
     }
 }

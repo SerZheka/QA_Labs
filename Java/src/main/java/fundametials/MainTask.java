@@ -53,5 +53,4 @@ public class MainTask {
         else
             System.out.println("Введенное число должно быть в пределах от 1 до 12.");
     }
-
 }
