@@ -13,7 +13,7 @@ import page.AbstractPage;
 import java.time.Duration;
 
 public class DerivTraderTradeSidebar extends AbstractPage {
-    private static final String multiplierLocatorPattern = "//div[contains(@class, 'trade-container__multiplier-dropdown')]//div[@id='%d']";
+    private static final String MULTIPLIER_LOCATOR_PATTERN = "//div[contains(@class, 'trade-container__multiplier-dropdown')]//div[@id='%d']";
 
     @FindBy(xpath = "//label[contains(@class, 'take_profit-checkbox')]/span[@class='dc-checkbox__box']")
     private WebElement takeProfitCheckbox;
@@ -89,7 +89,7 @@ public class DerivTraderTradeSidebar extends AbstractPage {
         multiplierDropdown.click();
         new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
                 .until(ExpectedConditions.presenceOfElementLocated(
-                        By.xpath(String.format(multiplierLocatorPattern, multiplier))))
+                        By.xpath(String.format(MULTIPLIER_LOCATOR_PATTERN, multiplier))))
                 .click();
         logger.info(() -> String.format("Multiplier set to %d", multiplier));
     }
