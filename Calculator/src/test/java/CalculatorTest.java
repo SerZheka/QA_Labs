@@ -1,4 +1,4 @@
-import dataProvider.CalculatorDataProvider;
+import data_provider.CalculatorDataProvider;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

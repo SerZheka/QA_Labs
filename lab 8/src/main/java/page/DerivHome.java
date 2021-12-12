@@ -16,11 +16,13 @@ public class DerivHome extends AbstractPage {
 
     public DerivHome openPage() {
         driver.get(HOME_PAGE_URL);
+        logger.info("Home page opened");
         return this;
     }
 
     public DerivLogin openLoginPage() {
         loginButton.click();
+        logger.info("Login page opened");
         return new DerivLogin(driver);
     }
 }
