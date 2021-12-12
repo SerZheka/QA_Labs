@@ -32,7 +32,8 @@ public class DerivTest {
         tradePage = new DerivHome(DriverSingleton.getDriver())
                 .openPage()
                 .openLoginPage()
-                .login(user);
+                .login(user)
+                .closeChatWidget();
     }
 
     @Test

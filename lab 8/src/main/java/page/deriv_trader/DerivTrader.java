@@ -12,6 +12,7 @@ public class DerivTrader extends AbstractPage {
     private final DerivTraderTradeSidebar tradeSidebar;
     private final DerivTraderOpenedPosition openedPosition;
     private final DerivTraderMainField mainField;
+    private final DerivTraderChat chat;
 
     @FindBy(id = "dt_reports_tab")
     private WebElement reportPageLink;
@@ -21,6 +22,7 @@ public class DerivTrader extends AbstractPage {
         tradeSidebar = new DerivTraderTradeSidebar(driver);
         openedPosition = new DerivTraderOpenedPosition(driver);
         mainField = new DerivTraderMainField(driver);
+        chat = new DerivTraderChat(driver);
     }
 
     public DerivReport openReportPage() {
@@ -83,6 +85,11 @@ public class DerivTrader extends AbstractPage {
 
     public DerivTrader createPosition(Position position) {
         tradeSidebar.createPosition(position);
+        return this;
+    }
+
+    public DerivTrader closeChatWidget() {
+        chat.closeChatWidget();
         return this;
     }
 }
