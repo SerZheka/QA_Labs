@@ -29,7 +29,7 @@ public class DerivTraderMainFieldIndicator extends AbstractPage {
         searchIndicatorInput.sendKeys(indicatorName);
         waitToElementBeClickable(addIndicatorButton);
         addIndicatorButton.click();
-        logger.info(String.format("Added indicator with name %s", indicatorName));
+        logger.info(() -> String.format("Added indicator with name %s", indicatorName));
         closeIndicatorWindow();
     }
 

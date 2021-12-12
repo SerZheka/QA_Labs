@@ -30,7 +30,7 @@ public class DerivTraderMainFieldTemplate extends AbstractPage {
         addNewTemplateButton.click();
         waitToElementBeClickable(searchTemplateInput);
         searchTemplateInput.sendKeys(templateName + Keys.ENTER);
-        logger.info(String.format("Added new template with name %s", templateName));
+        logger.info(() -> String.format("Added new template with name %s", templateName));
         closeTemplateWindow();
     }
 

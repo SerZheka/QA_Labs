@@ -11,7 +11,7 @@ import page.AbstractPage;
 import java.time.Duration;
 
 public class DerivTraderMainFieldMarket extends AbstractPage {
-    private final String marketNameLocatorPattern = "//div[text()= '%s' and @class='sc-mcd__item__name']/parent::div";
+    private static final String marketNameLocatorPattern = "//div[text()= '%s' and @class='sc-mcd__item__name']/parent::div";
 
     @FindBy(xpath = "//div[contains(@class, 'cq-chart-title')]/div[@class='cq-menu-btn']")
     private WebElement changeMarketButton;
@@ -33,7 +33,7 @@ public class DerivTraderMainFieldMarket extends AbstractPage {
                 .until(ExpectedConditions.elementToBeClickable(
                         By.xpath(String.format(marketNameLocatorPattern, marketName.toUpperCase()))))
                 .click();
-        logger.info(String.format("Market changed to %s", marketName));
+        logger.info(() -> String.format("Market changed to %s", marketName));
     }
 
     public String getCurrentMarket() {

@@ -32,20 +32,20 @@ public class DerivContractInfo extends AbstractPage{
         setTakeProfit(position);
         setStopLoss(position);
         setMultiplier(position);
-        logger.info(String.format("Position info: %s", position));
+        logger.info(() -> String.format("Position info: %s", position));
         return position;
     }
 
     private void setMultiplier(Position position) {
         position.setMultiplier(Integer.parseInt(
                 positionMultiplier.getText()
-                        .replaceAll("x", "")));
+                        .replace("x", "")));
     }
 
     private void setStopLoss(Position position) {
         try {
             position.setStopLoss(Float.parseFloat(positionStopLoss.get(1).getText()));
-        } catch (NumberFormatException | IndexOutOfBoundsException ignored) {}
+        } catch (NumberFormatException | IndexOutOfBoundsException ignored) { }
     }
 
     private void setTakeProfit(Position position) {

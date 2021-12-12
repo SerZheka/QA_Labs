@@ -13,7 +13,7 @@ import page.AbstractPage;
 import java.time.Duration;
 
 public class DerivTraderTradeSidebar extends AbstractPage {
-    private final String multiplierLocatorPattern = "//div[contains(@class, 'trade-container__multiplier-dropdown')]//div[@id='%d']";
+    private static final String multiplierLocatorPattern = "//div[contains(@class, 'trade-container__multiplier-dropdown')]//div[@id='%d']";
 
     @FindBy(xpath = "//label[contains(@class, 'take_profit-checkbox')]/span[@class='dc-checkbox__box']")
     private WebElement takeProfitCheckbox;
@@ -60,7 +60,7 @@ public class DerivTraderTradeSidebar extends AbstractPage {
         takeProfitCheckbox.click();
         waitToElementBeClickable(takeProfitInput);
         takeProfitInput.sendKeys(Float.toString(takeProfitLimit));
-        logger.info(String.format("Take profit set to %f.2", takeProfitLimit));
+        logger.info(() -> String.format("Take profit set to %.2f", takeProfitLimit));
     }
 
     private void setStopLossLimit(float stopLossLimit) {
@@ -68,14 +68,14 @@ public class DerivTraderTradeSidebar extends AbstractPage {
         stopLossCheckbox.click();
         waitToElementBeClickable(stopLossInput);
         stopLossInput.sendKeys(Float.toString(stopLossLimit));
-        logger.info(String.format("Stop loss set to %f.2", stopLossLimit));
+        logger.info(() -> String.format("Stop loss set to %.2f", stopLossLimit));
     }
 
     private void setMoney(float money) {
         waitToElementBeClickable(moneyInput);
         moneyInput.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
         moneyInput.sendKeys(Float.toString(money));
-        logger.info(String.format("Money set to %f.2", money));
+        logger.info(() -> String.format("Money set to %.2f", money));
     }
 
     private void setDealCancellation() {
@@ -91,7 +91,7 @@ public class DerivTraderTradeSidebar extends AbstractPage {
                 .until(ExpectedConditions.presenceOfElementLocated(
                         By.xpath(String.format(multiplierLocatorPattern, multiplier))))
                 .click();
-        logger.info(String.format("Multiplier set to %d", multiplier));
+        logger.info(() -> String.format("Multiplier set to %d", multiplier));
     }
 
     private void putOnRise() {

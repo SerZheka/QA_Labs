@@ -11,7 +11,7 @@ import page.AbstractPage;
 import java.time.Duration;
 
 public class DerivTraderChat extends AbstractPage {
-    private final int WAIT_TIMEOUT_SECONDS = 10;
+    private static final int WAIT_TIMEOUT_SECONDS_FOR_CHAT = 10;
 
     @FindBy(xpath = "//iframe[@id='chat-widget']")
     private WebElement chatFrame;
@@ -24,11 +24,14 @@ public class DerivTraderChat extends AbstractPage {
 
     public void closeChatWidget() {
         try {
-            new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
+            new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS_FOR_CHAT))
                     .until(ExpectedConditions.visibilityOf(chatFrame));
             driver.switchTo().frame(chatFrame);
             minimizeChatWidgetButton.click();
             driver.switchTo().defaultContent();
-        } catch (TimeoutException ignored) { }
+            logger.info("Chat widget closed");
+        } catch (TimeoutException ignored) {
+            logger.info("Chat widget not found");
+        }
     }
 }

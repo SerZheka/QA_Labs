@@ -14,7 +14,7 @@ public abstract class AbstractPage {
     protected WebDriver driver;
     protected final Logger logger = LogManager.getRootLogger();
 
-    protected final int WAIT_TIMEOUT_SECONDS = 20;
+    protected static final int WAIT_TIMEOUT_SECONDS = 20;
 
     protected AbstractPage(WebDriver driver) {
         this.driver = driver;

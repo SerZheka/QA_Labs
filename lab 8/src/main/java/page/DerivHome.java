@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class DerivHome extends AbstractPage {
-    private final String HOME_PAGE_URL = "https://deriv.com";
+    private static final String HOME_PAGE_URL = "https://deriv.com";
 
     @FindBy(id = "dm-nav-login-button")
     private WebElement loginButton;
