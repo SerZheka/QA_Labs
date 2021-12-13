@@ -9,7 +9,7 @@ public class DerivUserCreator {
     private DerivUserCreator() { }
 
     public static User getUserWithCredentials() {
-        return new User(TestDataReader.getTestData(TEST_DATA_USER_NAME),
-                TestDataReader.getTestData(TEST_DATA_PASSWORD));
+        return new User(TestDataReader.getUserData(TEST_DATA_USER_NAME),
+                TestDataReader.getUserData(TEST_DATA_PASSWORD));
     }
 }

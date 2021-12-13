@@ -24,12 +24,15 @@ public class TestListener implements ITestListener {
                 .getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(screenCapture, new File(
-                    String.format(".//target/screenshots/%s.png",
-                            ZonedDateTime.now()
-                                    .format(DateTimeFormatter.ofPattern("uuuu-MM-dd_HH-mm-ss")))
+                    String.format(".//target/screenshots/%s.png", getCurrentTime())
             ));
         } catch (IOException e) {
             logger.error(String.format("Failed to save screenshot: %s", e.getMessage()));
         }
+    }
+
+    private String getCurrentTime() {
+        return ZonedDateTime.now()
+                .format(DateTimeFormatter.ofPattern("uuuu-MM-dd_HH-mm-ss"));
     }
 }
